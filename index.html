@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhoomika S M | AI & Data Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        body { background-color: #020202; color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        @media (pointer: coarse) { .cursor-dot, .cursor-outline { display: none !important; } body { cursor: auto !important; } }
+        body { cursor: none; }
+        .cursor-dot { width: 8px; height: 8px; background: #6366f1; border-radius: 50%; position: fixed; pointer-events: none; z-index: 999; }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(99, 102, 241, 0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 998; transition: transform 0.15s ease-out; }
+        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+        .nav-tab { writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem; opacity: 0.3; transition: 0.5s; padding-right: 10px; cursor: pointer;  }
+        .nav-tab:hover, .active-tab { opacity: 1; color: #6366f1; border-right: 2px solid #6366f1; }
+        section { min-height: 100vh; padding: 0 10%; display: flex; flex-direction: column; justify-content: center; position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); opacity: 0; transform: translateY(50px); }
+        .preview-box { position: fixed; width: 300px; height: 200px; background: #111; border: 1px solid #6366f1; z-index: 100; pointer-events: none; opacity: 0; transform: scale(0.8); transition: all 0.3s ease; overflow: hidden; }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s; }
+        .glass-card:hover { border-color: #6366f1; background: rgba(99, 102, 241, 0.05); }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <nav class="fixed left-0 top-0 h-full w-20 border-r border-white/5 flex flex-col items-center justify-center gap-12 z-50 bg-[#020202]/80 backdrop-blur-md">
+
+    
+    <a href="#home" class="nav-tab active-tab">Home</a>
+    <a href="#projects" class="nav-tab">Projects</a>
+    <a href="#experience" class="nav-tab">Experience</a>
+    <a href="#simulations" class="nav-tab">Simulations</a>
+    <a href="#skills" class="nav-tab">Skills</a>
+</nav>
+
+    <main class="ml-20">
+        <section id="home" style="opacity: 1; transform: none;">
+            <h1 class="text-[10vw] font-bold leading-none tracking-tighter mb-4 glitch-text">BHOOMIKA S M</h1>
+            <p class="text-indigo-400 text-2xl tracking-[0.4em] uppercase">AI & Data Analytics Aspirant</p>
+            <div class="mt-12 flex flex-wrap gap-8">
+                <a href="Bhoomika_CV.pdf" download id="mag-btn" class="bg-indigo-600 px-10 py-4 font-bold hover:bg-white hover:text-black transition-colors duration-300">DOWNLOAD CV</a>
+                <div class="text-slate-500 flex flex-col justify-center text-sm">
+                    <span>bhoomikasm11@gmail.com | 8618789492</span>
+                    <span>Bangalore, Karnataka</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="text-white">
+    <h2 class="text-6xl font-bold mb-16 uppercase italic text-indigo-500">Innovations</h2>
+    <div class="grid gap-10">
+        <div class="project-item border-b border-white/10 pb-8 group transition-all duration-300">
+            <div class="flex justify-between items-start">
+                <h3 class="text-4xl font-bold group-hover:text-indigo-400 transition-colors">HealthAI Disease Prediction</h3>
+                <span class="text-xl font-bold italic text-indigo-500">01</span>
+            </div>
+            <p class="mt-4 text-slate-400 text-sm max-w-2xl leading-relaxed group-hover:text-slate-200 transition-colors">
+                Developed a diagnostic tool using Random Forest and SVM algorithms to predict multiple diseases with 95% accuracy based on user symptoms.
+            </p>
+        </div>
+
+        <div class="project-item border-b border-white/10 pb-8 group transition-all duration-300">
+            <div class="flex justify-between items-start">
+                <h3 class="text-4xl font-bold group-hover:text-indigo-400 transition-colors">Real-time Bus Tracking</h3>
+                <span class="text-xl font-bold italic text-indigo-500">02</span>
+            </div>
+            <p class="mt-4 text-slate-400 text-sm max-w-2xl leading-relaxed group-hover:text-slate-200 transition-colors">
+                Implemented a GPS-integrated web application using Leaflet.js and Firebase to provide live location updates and estimated arrival times for city transit.
+            </p>
+        </div>
+
+        <div class="project-item border-b border-white/10 pb-8 group transition-all duration-300">
+            <div class="flex justify-between items-start">
+                <h3 class="text-4xl font-bold group-hover:text-indigo-400 transition-colors">AI Resume Analyser</h3>
+                <span class="text-xl font-bold italic text-indigo-500">03</span>
+            </div>
+            <p class="mt-4 text-slate-400 text-sm max-w-2xl leading-relaxed group-hover:text-slate-200 transition-colors">
+                Built an NLP-powered tool using Spacy and Python to extract key skills from PDFs and score them against specific job descriptions.
+            </p>
+        </div>
+    </div>
+</section>
+
+        <section id="experience">
+            <h2 class="text-6xl font-bold mb-16 uppercase tracking-tighter text-indigo-500">History</h2>
+            <div class="space-y-12">
+                <div class="border-l-2 border-indigo-600 pl-8">
+                    <h3 class="text-3xl font-bold">Warranty Executive | Cauvery Motors</h3>
+                    <p class="text-slate-500 mb-2">OCT 2025 - PRESENT</p>
+                    <p class="text-slate-400 text-sm max-w-2xl">Full warranty management using DBM & SAP software. Handled Field Technical Reports (FTRs) and financial invoices.</p>
+                </div>
+                <div class="border-l-2 border-slate-700 pl-8">
+                    <h3 class="text-3xl font-bold">AI Intern | CodeClause</h3>
+                    <p class="text-slate-500 mb-2">INTERNSHIP PROJECT</p>
+                    <p class="text-slate-400 text-sm max-w-2xl">Facial Recognition System using OpenCV and TensorFlow for real-time identification.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="simulations">
+            <h2 class="text-6xl font-bold mb-16 uppercase tracking-tighter">Job Simulations</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-8 glass-card">
+                    <h4 class="font-bold text-indigo-400 uppercase text-xl">Tata Group</h4>
+                    <p class="text-sm text-slate-400 mt-2">GenAI Data Quality & Predictive Modeling insights.</p>
+                </div>
+                <div class="p-8 glass-card">
+                    <h4 class="font-bold text-indigo-400 uppercase text-xl">Deloitte Australia</h4>
+                    <p class="text-sm text-slate-400 mt-2">Forensic Technology & Cyber Breach Log Analysis.</p>
+                </div>
+                <div class="p-8 glass-card">
+                    <h4 class="font-bold text-indigo-400 uppercase text-xl">JPMorgan Chase</h4>
+                    <p class="text-sm text-slate-400 mt-2">Quantitative Research & Loan Default Estimation.</p>
+                </div>
+                <div class="p-8 glass-card">
+                    <h4 class="font-bold text-indigo-400 uppercase text-xl">AWS APAC</h4>
+                    <p class="text-sm text-slate-400 mt-2">Scalable Hosting Architecture Design.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+    <h2 class="text-6xl font-bold mb-16 uppercase tracking-tighter text-indigo-500">Skills & Bio</h2>
+    <div class="grid md:grid-cols-2 gap-20">
+        <div class="space-y-6">
+            <div class="group">
+                <span class="px-4 py-1 border border-indigo-500/50 text-[10px] text-indigo-400 font-bold tracking-widest uppercase">Python</span>
+                <p class="text-slate-400 text-sm mt-2 group-hover:text-white transition-colors italic">Data cleaning, automation scripts, and ML model development.</p>
+            </div>
+            
+            <div class="group">
+                <span class="px-4 py-1 border border-indigo-500/50 text-[10px] text-indigo-400 font-bold tracking-widest uppercase">SQL</span>
+                <p class="text-slate-400 text-sm mt-2 group-hover:text-white transition-colors italic">Complex queries, database management, and data extraction.</p>
+            </div>
+            
+            <div class="group">
+                <span class="px-4 py-1 border border-indigo-500/50 text-[10px] text-indigo-400 font-bold tracking-widest uppercase">Tableau</span>
+                <p class="text-slate-400 text-sm mt-2 group-hover:text-white transition-colors italic">Creating interactive dashboards and visual storytelling with data.</p>
+            </div>
+            
+            <div class="group">
+                <span class="px-4 py-1 border border-indigo-500/50 text-[10px] text-indigo-400 font-bold tracking-widest uppercase">Machine Learning</span>
+                <p class="text-slate-400 text-sm mt-2 group-hover:text-white transition-colors italic">Predictive modeling, classification, and regression analysis.</p>
+            </div>
+            
+            <div class="group">
+                <span class="px-4 py-1 border border-indigo-500/50 text-[10px] text-indigo-400 font-bold tracking-widest uppercase">SAP</span>
+                <p class="text-slate-400 text-sm mt-2 group-hover:text-white transition-colors italic">Warranty management, financial invoicing, and DBM operations.</p>
+            </div>
+        </div>
+
+        <div class="text-slate-400 text-sm space-y-4">
+            <div class="border-l border-white/10 pl-6">
+                <p class="text-indigo-500 font-bold uppercase tracking-widest text-xs mb-4">Education</p>
+                <p class="flex justify-between border-b border-white/5 pb-2"><span>BCA: KLE Society's</span><span>GPA: 8.0</span></p>
+                <p class="flex justify-between border-b border-white/5 pb-2"><span>PUC: MES Mains</span><span>64%</span></p>
+                <p class="flex justify-between border-b border-white/5 pb-2"><span>SSLC: Sri Ranga Vidyanikethan</span><span>89.59%</span></p>
+            </div>
+            <div class="border-l border-white/10 pl-6 pt-4">
+                <p class="text-indigo-500 font-bold uppercase tracking-widest text-xs mb-2">Languages</p>
+                <p class="text-slate-300">English, Kannada, Hindi, Marathi</p>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <footer class="w-full py-10 flex justify-center items-center">
+    <a href="https://www.linkedin.com/in/bhoomika-sm-91477627b" target="_blank" class="flex items-center gap-2 text-slate-500 hover:text-indigo-400 transition-all duration-300 group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+        <span class="text-xs tracking-[0.3em] uppercase font-bold">LinkedIn Profile</span>
+    </a>
+</footer>
+
+    <script>
+        // --- 1. THREE.JS BACKGROUND ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 2000;
+        const posArray = new Float32Array(particlesCount * 3);
+        for(let i=0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 10; }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const material = new THREE.PointsMaterial({ size: 0.005, color: '#6366f1' });
+        const particlesMesh = new THREE.Points(particlesGeometry, material);
+        scene.add(particlesMesh);
+        camera.position.z = 3;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particlesMesh.rotation.y += 0.0015;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // --- 2. GSAP REVEAL ANIMATIONS ---
+        gsap.registerPlugin(ScrollTrigger);
+        document.querySelectorAll('section').forEach((section) => {
+            gsap.to(section, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                }
+            });
+        });
+
+        // --- 3. MAGNETIC BUTTON EFFECT ---
+        const magBtn = document.getElementById('mag-btn');
+        document.addEventListener('mousemove', (e) => {
+            const rect = magBtn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            if (Math.abs(x) < 100 && Math.abs(y) < 50) {
+                gsap.to(magBtn, { x: x * 0.3, y: y * 0.3, duration: 0.5 });
+            } else {
+                gsap.to(magBtn, { x: 0, y: 0, duration: 0.5 });
+            }
+        });
+
+        // --- 4. CURSOR & INTERACTION ---
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+        const previewBox = document.getElementById('preview-box');
+        const previewImg = document.getElementById('preview-img');
+
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(dot, {x: e.clientX, y: e.clientY, duration: 0.1});
+            gsap.to(outline, {x: e.clientX - 16, y: e.clientY - 16, duration: 0.3});
+            gsap.to(previewBox, {x: e.clientX + 25, y: e.clientY + 25, duration: 0.4});
+        });
+
+        document.querySelectorAll('.project-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                previewImg.src = item.getAttribute('data-img');
+                gsap.to(previewBox, {opacity: 1, scale: 1, duration: 0.3});
+            });
+            item.addEventListener('mouseleave', () => {
+                gsap.to(previewBox, {opacity: 0, scale: 0.8, duration: 0.3});
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        const indicator = document.getElementById('nav-indicator');
+const tabs = document.querySelectorAll('.nav-tab');
+
+function moveIndicator(target) {
+    const rect = target.getBoundingClientRect();
+    const navRect = target.parentElement.getBoundingClientRect();
+    
+    // Calculate position relative to the nav container
+    const topPosition = rect.top - navRect.top;
+    
+    gsap.to(indicator, {
+        y: topPosition,
+        height: rect.height,
+        duration: 0.5,
+        ease: "power3.out"
+    });
+}
+
+// Update the ScrollTrigger logic
+document.querySelectorAll('section').forEach((section, i) => {
+    ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        end: "bottom center",
+        onToggle: self => {
+            if(self.isActive) {
+                tabs.forEach(t => t.classList.remove('active-tab'));
+                tabs[i].classList.add('active-tab');
+                moveIndicator(tabs[i]);
+            }
+        }
+    });
+});
+
+// Initialize indicator position on load
+window.addEventListener('load', () => moveIndicator(document.querySelector('.active-tab')));
+    </script>
+</body>
+</html>
