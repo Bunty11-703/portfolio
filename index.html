@@ -50,14 +50,16 @@
                 <div class="text-slate-500 flex flex-col justify-center text-sm">
                     <span>bhoomikasm11@gmail.com | 8618789492</span>
                     <span>Bangalore, Karnataka</span>
-                    <div class="text-slate-500 flex flex-col justify-center text-sm">
-                    <a href="https://github.com/Bunty11-703"
+                    <div class="text-slate-500 flex flex-col justify-center text-sm"></div>
+                    <span>
+                        <a href="https://github.com/Bunty11-703"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="underline text-slate-400 hover:text-indigo-400 hover:tracking-wide transition-all duration-300">
+                        class="hover:text-indigo-400 transition-colors underline">
                         GitHub.com
                     </a>
-                    </div>
+                </span>
+                </div>
                 </div>
             </div>
         </section>
@@ -154,26 +156,65 @@
         </section>
 
         <section id="simulations">
-            <h2 class="text-6xl font-bold mb-16 uppercase tracking-tighter">Job Simulations</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="p-8 glass-card">
-                    <h4 class="font-bold text-indigo-400 uppercase text-xl">Tata Group</h4>
-                    <p class="text-sm text-slate-400 mt-2">GenAI Data Quality & Predictive Modeling insights.</p>
-                </div>
-                <div class="p-8 glass-card">
-                    <h4 class="font-bold text-indigo-400 uppercase text-xl">Deloitte Australia</h4>
-                    <p class="text-sm text-slate-400 mt-2">Forensic Technology & Cyber Breach Log Analysis.</p>
-                </div>
-                <div class="p-8 glass-card">
-                    <h4 class="font-bold text-indigo-400 uppercase text-xl">JPMorgan Chase</h4>
-                    <p class="text-sm text-slate-400 mt-2">Quantitative Research & Loan Default Estimation.</p>
-                </div>
-                <div class="p-8 glass-card">
-                    <h4 class="font-bold text-indigo-400 uppercase text-xl">AWS APAC</h4>
-                    <p class="text-sm text-slate-400 mt-2">Scalable Hosting Architecture Design.</p>
-                </div>
-            </div>
-        </section>
+  <h2 class="text-6xl font-bold mb-16 uppercase tracking-tighter">Job Simulations</h2>
+
+  <div class="grid md:grid-cols-2 gap-6">
+
+    <div class="p-8 glass-card">
+      <h4 class="font-bold text-indigo-400 uppercase text-xl">Tata Group</h4>
+      <p class="text-sm text-slate-400 mt-2">
+        GenAI Data Quality & Predictive Modeling insights.
+      </p>
+      <button 
+        onclick="openCertificate('certificates/tata.png')" 
+        class="mt-4 text-indigo-300 text-sm uppercase tracking-widest hover:text-indigo-500 transition"
+      >
+        View Certificate →
+      </button>
+    </div>
+
+    <div class="p-8 glass-card">
+      <h4 class="font-bold text-indigo-400 uppercase text-xl">Deloitte Australia</h4>
+      <p class="text-sm text-slate-400 mt-2">
+        Forensic Technology & Cyber Breach Log Analysis.
+      </p>
+      <button 
+        onclick="openCertificate('certificates/deloitte.png')" 
+        class="mt-4 text-indigo-300 text-sm uppercase tracking-widest hover:text-indigo-500 transition"
+      >
+        View Certificate →
+      </button>
+    </div>
+
+    <div class="p-8 glass-card">
+      <h4 class="font-bold text-indigo-400 uppercase text-xl">JPMorgan Chase</h4>
+      <p class="text-sm text-slate-400 mt-2">
+        Quantitative Research & Loan Default Estimation.
+      </p>
+      <button 
+        onclick="openCertificate('certificates/jpmorgan.png')" 
+        class="mt-4 text-indigo-300 text-sm uppercase tracking-widest hover:text-indigo-500 transition"
+      >
+        View Certificate →
+      </button>
+    </div>
+
+    <div class="p-8 glass-card">
+      <h4 class="font-bold text-indigo-400 uppercase text-xl">AWS APAC</h4>
+      <p class="text-sm text-slate-400 mt-2">
+        Scalable Hosting Architecture Design.
+      </p>
+      <button 
+        onclick="openCertificate('certificates/aws.png')" 
+        class="mt-4 text-indigo-300 text-sm uppercase tracking-widest hover:text-indigo-500 transition"
+      >
+        View Certificate →
+      </button>
+    </div>
+
+  </div>
+</section>
+
 
         <section id="skills">
     <h2 class="text-6xl font-bold mb-16 uppercase tracking-tighter text-indigo-500">Skills & Bio</h2>
@@ -220,6 +261,27 @@
     </div>
 </section>
     </main>
+    <div 
+  id="certificateModal" 
+  class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center hidden z-50"
+>
+  <div class="relative max-w-4xl w-full p-6">
+    <button 
+      onclick="closeCertificate()" 
+      class="absolute -top-10 right-0 text-white text-sm uppercase tracking-widest hover:text-red-400"
+    >
+      Close ✕
+    </button>
+
+    <img 
+      id="certificateImage" 
+      src="" 
+      alt="Certificate" 
+      class="rounded-xl shadow-2xl w-full object-contain"
+    />
+  </div>
+</div>
+
 
     <footer class="w-full py-10 flex justify-center items-center">
     <a href="https://www.linkedin.com/in/bhoomika-sm-91477627b" target="_blank" class="flex items-center gap-2 text-slate-500 hover:text-indigo-400 transition-all duration-300 group">
@@ -345,10 +407,20 @@ document.querySelectorAll('section').forEach((section, i) => {
 
 // Initialize indicator position on load
 window.addEventListener('load', () => moveIndicator(document.querySelector('.active-tab')));
+  function openCertificate(imagePath) {
+    const modal = document.getElementById("certificateModal");
+    const img = document.getElementById("certificateImage");
+
+    img.src = imagePath;
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeCertificate() {
+    const modal = document.getElementById("certificateModal");
+    modal.classList.add("hidden");
+    document.body.style.overflow = "auto";
+  }
     </script>
 </body>
-
 </html>
-
-
-
