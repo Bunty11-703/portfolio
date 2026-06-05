@@ -156,8 +156,10 @@
     .sim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
     .sim-card { background: var(--card); padding: 34px 30px; display: flex; flex-direction: column; gap: 11px; transition: background 0.25s; cursor: pointer; }
     .sim-card:hover { background: #1c1c2e; }
-    .sim-logo { height: 26px; object-fit: contain; object-position: left; filter: brightness(0) invert(0.55); transition: filter 0.25s; margin-bottom: 4px; }
-    .sim-card:hover .sim-logo { filter: brightness(0) invert(0.9); }
+    .sim-logo { height: 28px; object-fit: contain; object-position: left; margin-bottom: 4px; }
+    .sim-logo-svg { height: 28px; display: flex; align-items: center; margin-bottom: 4px; opacity: 0.75; transition: opacity 0.25s; }
+    .sim-logo-svg svg { height: 100%; width: auto; }
+    .sim-card:hover .sim-logo-svg { opacity: 1; }
     .sim-name { font-family: var(--serif); font-size: 20px; color: #fff; }
     .sim-desc { font-size: 13px; line-height: 1.6; color: var(--muted); flex: 1; }
     .sim-tasks { display: flex; flex-direction: column; gap: 4px; margin-top: 2px; }
@@ -442,7 +444,12 @@
 
     <div class="sim-grid">
       <div class="sim-card" onclick="openCert('certificates/tata.png')">
-        <img src="certificates/tata.png" alt="Tata" class="sim-logo" />
+        <!-- Tata wordmark -->
+        <div class="sim-logo-svg">
+          <svg viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="28" font-family="Arial, sans-serif" font-weight="700" font-size="30" letter-spacing="-1" fill="#003087">TATA</text>
+          </svg>
+        </div>
         <div class="sim-name">Tata IQ</div>
         <div class="sim-desc">GenAI-powered data analytics & strategy for Financial Services.</div>
         <div class="sim-tasks">
@@ -457,7 +464,13 @@
       </div>
 
       <div class="sim-card" onclick="openCert('certificates/deloitte.png')">
-        <img src="certificates/deloitte.png" alt="Deloitte" class="sim-logo" />
+        <!-- Deloitte wordmark -->
+        <div class="sim-logo-svg">
+          <svg viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="27" font-family="Arial, sans-serif" font-weight="700" font-size="26" fill="#86BC25">Deloitte</text>
+            <circle cx="148" cy="27" r="5" fill="#86BC25"/>
+          </svg>
+        </div>
         <div class="sim-name">Deloitte Australia</div>
         <div class="sim-desc">Forensic technology, cyber breach log analysis & Tableau dashboards.</div>
         <div class="sim-tasks">
@@ -472,7 +485,13 @@
       </div>
 
       <div class="sim-card" onclick="openCert('certificates/jpmorgan.png')">
-        <img src="certificates/jpmorgan.png" alt="JPMorgan Chase" class="sim-logo" />
+        <!-- JPMorgan Chase wordmark -->
+        <div class="sim-logo-svg">
+          <svg viewBox="0 0 220 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="18" font-family="Arial, sans-serif" font-weight="700" font-size="13" letter-spacing="0.5" fill="#003087">JPMORGAN CHASE &amp; CO.</text>
+            <line x1="0" y1="22" x2="220" y2="22" stroke="#003087" stroke-width="1.5"/>
+          </svg>
+        </div>
         <div class="sim-name">JPMorgan Chase</div>
         <div class="sim-desc">Quantitative research — loan portfolio analysis & default probability modelling.</div>
         <div class="sim-tasks">
@@ -487,7 +506,16 @@
       </div>
 
       <div class="sim-card" onclick="openCert('certificates/aws.png')">
-        <img src="certificates/aws.png" alt="AWS" class="sim-logo" />
+        <!-- AWS wordmark -->
+        <div class="sim-logo-svg">
+          <svg viewBox="0 0 100 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="16" font-family="Arial, sans-serif" font-weight="900" font-size="13" letter-spacing="1" fill="#FF9900">aws</text>
+            <!-- smile arc -->
+            <path d="M2 22 Q50 34 98 22" stroke="#FF9900" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- arrow tip -->
+            <polygon points="95,19 100,22 95,25" fill="#FF9900"/>
+          </svg>
+        </div>
         <div class="sim-name">AWS APAC</div>
         <div class="sim-desc">Solutions architecture — scalable, fault-tolerant hosting for a high-growth client.</div>
         <div class="sim-tasks">
